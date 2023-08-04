@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUC - SRC Elections</title>
+    <link rel="stylesheet" href="helpers/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="helpers/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="helpers/animate.min.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200&display=swap");
+      @font-face {
+        font-family: "Poppins";
+        src: url("assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype"),
+          url("assets/fonts/Poppins/Poppins-Medium.ttf") format("truetype"),
+          url("assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype"),
+          url("assets/fonts/Poppins/Poppins-SemiBold.ttf") format("truetype")
+            url("assets/fonts/Poppins/Poppins-Black.ttf") format("truetype");
+      }
+
+      * {
+        font-family: "Poppins", sans-serif, Arial, Helvetica, sans-serif;
+      }
+
+      input:focus {
+        outline: none !important;
+        border-color: #a10121 !important;
+        box-shadow: 0 0 3px #a10121 !important;
+      }
+
+      @media (max-width: 1120px) {
+        .con {
+          width: 80% !important ;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .con {
+          width: 90% !important ;
+        }
+      }
+
+      #preloader {
+        display: flex;
+        transition: all 2s;
+      }
+    </style>
+  </head>
+  <body
+    style="background-color: #a10121"
+    class="vh-100 d-flex align-items-center justify-content-center"
+  >
+    <!-- Preloader -->
+    <div
+      id="preloader"
+      class="align-items-center bg-danger justify-content-center"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+      "
+    >
+      <div
+        class="text-dark p-5 rounded bg-light shadow-lg text-center"
+      >
+        <span
+          class="fa-beat bg-dark shadow p-4 d-inline-block mb-3 rounded-circle text-light fw-bold"
+          >PT</span
+        >
+        <h4>Powered by prymeTech </h4>
+        <!-- <p>Contact: 0593787724 | 0502002358 | latifm8360@gmail.com</p> -->
+      </div>
+    </div>
+
+    <div
+      class="bg-light con shadow-lg rounded"
+      style="width: 70%; display: none"
+    >
+      <div class="container" style="position: relative">
+        <span
+          class="p-2"
+          style="position: absolute; bottom: 0%; right: 0%; font-size: 0.7em"
+        >
+          <i
+            >Powered by PrymeTech --------&gt; 0593787724 | 0502002358 |
+            latifm8360@gmail.com</i
+          >
+        </span>
+        <div class="d-flex align-items-center">
+          <div
+            class="logo border-end px-3 border-5 py-3 text-center"
+            style="
+              width: 30%;
+              border-color: #a10121 !important;
+              overflow: hidden;
+            "
+          >
+            <img src="assets/images/logo.png" class="img-fluid" alt="" />
+            <h6 class="fw-bold mt-2">
+              Dominion University College
+            </h6>
+            <p>SRC Elections</p>
+          </div>
+
+          <form id="loginVoter" class="px-5" style="width: 70%">
+            <div class="mb-3">
+              <label for="indexNumber" class="form-label"
+                >Enter your index number/voters id:</label
+              >
+              <input
+                type="text"
+                class="form-control border-dark"
+                id="indexNumber"
+                placeholder="Voters id"
+                name="voterId"
+                required
+                autofocus
+              />
+            </div>
+            <div class="mb-3">
+              <label for="accessCode" class="form-label"
+                >Enter Access Code:</label
+              >
+              <input
+                type="text"
+                class="form-control border-dark"
+                id="accessCode"
+                name="accessCode"
+                placeholder="Access code"
+                required
+              />
+            </div>
+            <div class="text-end">
+              <button
+                type="submit"
+                class="btn text-light"
+                style="background-color: #a10121"
+              >
+                Get Started
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div style="position: absolute; bottom: 0;" class="text-center text-light">
+
+<p> <i>Powered by: Pryme Tech -------- 0593787724 | 0502002358 | latifm8360@gmail.com</i> </p>
+    </div> -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="messageModal"
+      tabindex="-1"
+      aria-labelledby="messageModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <!-- <div class="modal-header">
+        <h5 class="modal-title" id="voteModalLabel">Vote Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+          <div class="modal-body">
+            <div class="text-center">
+              <i id="messageStatusIcon" class="fa-5x"></i>
+              <p id="messageStatusMessage"></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <small class="text-muted">Powered by prymeTech &copy; 2023</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="helpers/jquery.js"></script>
+    <script>
+      // Show the preloader for 2 seconds
+      $(document).ready(function () {
+        setTimeout(function () {
+          $("#preloader").fadeOut("slow", function () {
+            $(".con").fadeIn("slow");
+            // $("#preloader").hide()
+          });
+        }, 1000);
+      });
+
+      let server = "/duc/backend";
+      function showErrorModal(msg) {
+        const modal = new bootstrap.Modal(
+          document.getElementById("messageModal")
+        );
+        const icon = document.getElementById("messageStatusIcon");
+        const message = document.getElementById("messageStatusMessage");
+
+        icon.className = "fas fa-times-circle fa-3x fa-flip text-danger";
+        message.innerHTML = msg;
+
+        modal.show();
+      }
+      $("#loginVoter").on("submit", function (e) {
+        e.preventDefault();
+
+        let formData = new FormData(this);
+
+        $.ajax({
+          url: `${server}/index.php?q=voterLogin`,
+          type: "POST",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function (response) {
+            // Handle the response from the server
+            response = JSON.parse(response);
+            if (!response.status) {
+              showErrorModal(response.message);
+              $("#nessageModal").modal("show");
+            } else {
+              localStorage.setItem("voterId", formData.get("voterId"));
+              location.href = "vote.html";
+            }
+          },
+          error: function (xhr, status, error) {
+            // Handle the error
+            console.error(error);
+          },
+        });
+      });
+    </script>
+
+    <script src="helpers/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

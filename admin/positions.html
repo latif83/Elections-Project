@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="alert d-none alert-dismissible fade show" role="alert" style="width: max-content;">
+        <span></span>
+        <button type="button" class="btn-close btn" data-bs-dismiss="alert" aria-label="Close"> <i class="fas fa-close"></i> </button>
+      </div>
+    <h2>Positions</h2>
+    <div class="mb-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPositionModal"> <i class="fas fa-circle-plus"></i> Add New Position</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table text-center table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Position</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="positions">
+                <tr>
+                    <td colspan="3">
+                        loading...
+                    </td>
+                </tr>
+                <!-- Add more rows for additional positions -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Position Modal -->
+<div class="modal fade" id="addPositionModal" tabindex="-1" aria-labelledby="addPositionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addPositionModalLabel">Add New Position</h5>
+                <button type="button" class="btn-close btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your form fields for adding a new position here -->
+                <form id="addPositionForm">
+                    <div class="mb-3">
+                        <label for="positionName" class="form-label">Position Title</label>
+                        <input autofocus type="text" class="form-control" name="position" required placeholder="Enter position here..." id="positionName" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="closeAddModal" type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-secondary" >Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Position Modal -->
+<div class="modal fade" id="editPositionModal" tabindex="-1" aria-labelledby="editPositionModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editPositionModalLabel">Edit Position</h5>
+                <button type="button" class="btn-close btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Add your form fields for adding a new position here -->
+                <form id="editPositionForm">
+                    <input type="text" hidden name="positionId" id="editPositionId">
+                    <div class="mb-3">
+                        <label for="editPositionName" class="form-label">Position Title</label>
+                        <input autofocus type="text" class="form-control" name="position" required placeholder="Enter position here..." id="editPositionName" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="closeEditModal" type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-secondary" >Cancel</button>
+                        <button type="submit" class="btn btn-primary">Make Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="positions.js"></script>

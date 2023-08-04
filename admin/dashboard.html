@@ -1,0 +1,124 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div
+      class="d-sm-flex align-items-center justify-content-between mb-4"
+    >
+      <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+      <!-- <a
+        href="#"
+        class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+      >
+        <i class="fas fa-download fa-sm text-white-50"></i> Generate
+        Report
+      </a> -->
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Total Candidates Card -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div
+                  class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                >
+                  Total Candidates
+                </div>
+                <div id="totalCandidates" class="h5 mb-0 font-weight-bold text-gray-800">
+                  0
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-users fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Total Voters Card -->
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div
+                  class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                >
+                  Total Voters
+                </div>
+                <div id="totalVoters" class="h5 mb-0 font-weight-bold text-gray-800">
+                  0
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-user-friends fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Election Results Card -->
+      <!-- <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div
+                  class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                >
+                  Election Results
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  Final
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-poll fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Pending Tasks Card -->
+      <!-- <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div
+                  class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                >
+                  Pending Tasks
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  5
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-tasks fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <script>
+
+$.ajax({
+  url : `${server}/index.php?q=getDashboardSummary`,
+  success : function(response){
+    response = JSON.parse(response)
+    console.log(response)
+    $("#totalCandidates").html(response.total_candidates)
+    $("#totalVoters").html(response.total_voters)
+  }
+})
+
+  </script>

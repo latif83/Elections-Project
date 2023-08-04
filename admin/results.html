@@ -1,0 +1,28 @@
+
+    <div class="container-fluid mt-5">
+        <h1 class="mb-4">Election Results</h1>
+        <div id="resultsContainer"></div>
+    </div>
+
+    <!-- Modal for displaying the chart -->
+    <div class="modal fade" id="chartModal" tabindex="-1" aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chartModalLabel">Vote Distribution</h5>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="chartModalBody">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../helpers/chart.js"></script> <!-- Include Chart.js library -->
+
+    <script src="results.js"></script>
+
+</body>
+</html>

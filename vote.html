@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DUC - SRC Elections</title>
+    <link rel="stylesheet" href="helpers/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="helpers/bootstrap/css/bootstrap.min.css" />
+    <link
+    rel="stylesheet"
+    href="helpers/animate.min.css"
+  />
+    <style>
+      @font-face {
+        font-family: "Poppins";
+        src: url("assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype"),
+          url("assets/fonts/Poppins/Poppins-Medium.ttf") format("truetype"),
+          url("assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype"),
+          url("assets/fonts/Poppins/Poppins-SemiBold.ttf") format("truetype")
+            url("assets/fonts/Poppins/Poppins-Black.ttf") format("truetype");
+      }
+
+      * {
+        font-family: "Poppins", sans-serif, Arial, Helvetica, sans-serif;
+      }
+
+      /* body{
+        background-image: url(assets/images/logobig.jpg);
+        background-size: cover;
+        background-position: center;
+      }
+
+      body::after{
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #a1012158
+      } */
+
+      /* .voter {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+      } */
+
+      .card img{
+        height: 150px !important;
+        object-fit: cover;
+        width: 100%;
+        object-position: top;
+      }
+    </style>
+  </head>
+  <body
+    style="background-color: #a10121"
+  >
+    <div class="voter pt-5">
+      <div
+        class="bg-light animate__animated animate__backInDown shadow text-center px-3 d-flex align-items-center m-auto"
+        style="
+          width: max-content;
+          border-top-right-radius: 16px;
+          border-bottom-left-radius: 16px;
+        "
+      >
+        <div class="logo py-3 pe-3 border-end border-5" style="border-color: #a10121 !important;">
+          <img src="assets/images/logo.png" width="60" alt="logo" />
+        </div>
+        <div class="ms-2">
+          <p class="m-0 voterDetails"></p>
+          <p class="m-0 voterDetails" style="text-transform: uppercase;"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5">
+        <form class="mt-5">
+
+            <h3 id="sectionTitle" class="text-light"></h3>
+                <hr class="text-light bg-light">
+
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-info text-dark" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">0%</div>
+                  </div>
+
+           
+              </form>
+          
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* Add CSS animations to the modal */
+.modal.fade .modal-dialog {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+
+    </style>
+
+    <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" onclick="showErrorModal()" data-bs-toggle="modal" data-bs-target="#voteModal">
+  Cast Your Vote
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="voteModal" tabindex="-1" aria-labelledby="voteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="voteModalLabel">Vote Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> -->
+      <div class="modal-body">
+        <div class="text-center">
+          <i id="voteStatusIcon" class="fa-5x"></i>
+          <p id="voteStatusMessage"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <small class="text-muted">Powered by prymeTech &copy; 2023</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <script src="helpers/jquery.js"></script>
+    <script src="vote.js"></script>
+
+    <script src="helpers/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

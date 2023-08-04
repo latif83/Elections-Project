@@ -1,0 +1,273 @@
+<div class="container-fluid">
+
+    <style>
+        .img-prev{
+            height: 200px;
+            display: block;
+            margin: auto;
+            width: auto;
+        }
+    </style>
+
+  <div
+    class="alert d-none mx-auto alert-dismissible fade show"
+    role="alert"
+    style="width: max-content"
+  >
+    <span></span>
+    <button
+      type="button"
+      class="btn-close btn"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    >
+      <i class="fas fa-close"></i>
+    </button>
+  </div>
+
+  <h2>Candidates</h2>
+  <div class="mb-3">
+    <button
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addCandidateModal"
+    >
+      <i class="fas fa-circle-plus"></i> Add New Candidate
+    </button>
+  </div>
+  <div class="table-responsive">
+    <table class="table text-center table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="candidatesTbody">
+        <!-- JavaScript will populate the table rows dynamically -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Add Candidate Modal -->
+<div
+  class="modal fade"
+  id="addCandidateModal"
+  tabindex="-1"
+  aria-labelledby="addCandidateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addCandidateModalLabel">
+          Add New Candidate
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addCandidateForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-4">
+                <label for="candidateName" class="form-label"
+                  >Candidate Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="candidateName"
+                  name="candidateName"
+                  placeholder="Enter full name of candidate"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label for="positionSelect" class="form-label">Position</label>
+                <select
+                  class="form-select form-control"
+                  id="positionSelect"
+                  name="positionSelect"
+                  required
+                >
+                  <!-- Options will be populated dynamically -->
+                  <option value="">Select Position</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label for="candidateDescription" class="form-label"
+                  >Description/Team Message</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="candidateDescription"
+                  name="candidateDescription"
+                  placeholder="e.g. Team ..."
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-1">
+                <label for="candidateImage" class="form-label">
+                  <i class="fas fa-circle-plus"></i> Upload Candidate
+                  Image</label
+                >
+                <input
+                  type="file"
+                  style="cursor: pointer"
+                  class=""
+                  name="candidateImage"
+                  id="candidateImage"
+                  accept="image/*"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <!-- <label class="form-label">Image Preview</label> -->
+                <div id="imagePreview"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              id="closeAddModal"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Add Candidate</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Candidate Modal -->
+<div
+  class="modal fade"
+  id="editCandidateModal"
+  tabindex="-1"
+  aria-labelledby="editCandidateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editCandidateModalLabel">
+          Edit Candidate
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="editCandidateForm">
+            <input type="text" id="candidateID" hidden name="candidateId">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-4">
+                <label for="editCandidateName" class="form-label"
+                  >Candidate Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCandidateName"
+                  name="candidateName"
+                  placeholder="Enter full name of candidate"
+                  required
+                />
+              </div>
+              <div class="mb-4">
+                <label for="editPositionSelect" class="form-label">Position</label>
+                <select
+                  class="form-select form-control"
+                  id="editPositionSelect"
+                  name="positionSelect"
+                  required
+                >
+                  <!-- Options will be populated dynamically -->
+                  <option value="">Select Position</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label for="editCandidateDescription" class="form-label"
+                  >Description/Team Message</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCandidateDescription"
+                  name="candidateDescription"
+                  placeholder="e.g. Team ..."
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-1">
+                <label for="editCandidateImage" class="form-label btn btn-danger">
+                  <i class="fas fa-circle-plus"></i> Click to Change Candidate
+                  Image</label
+                >
+                <input
+                  type="file"
+                  style="cursor: pointer"
+                  class=""
+                  name="candidateImage"
+                  id="editCandidateImage"
+                  accept="image/*"
+                  hidden
+                />
+              </div>
+              <div class="mb-3">
+                <!-- <label class="form-label">Image Preview</label> -->
+                <div id="editImagePreview"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              id="closeEditModal"
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Rest of the code... -->
+<script src="candidates.js"></script>

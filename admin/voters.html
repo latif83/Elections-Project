@@ -1,0 +1,121 @@
+<div class="container-fluid">
+    <div
+    class="alert d-none mx-auto alert-dismissible fade show"
+    role="alert"
+    style="width: max-content"
+  >
+    <span></span>
+    <button
+      type="button"
+      class="btn-close btn"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    >
+      <i class="fas fa-close"></i>
+    </button>
+  </div>
+    <h2>Voters</h2>
+    <div class="mb-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addVoterModal">
+            <i class="fas fa-user-plus"></i> Add New Voter
+        </button>
+    </div>
+    <div class="table-responsive">
+        <table class="table text-center table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Voter's ID</th>
+                    <th>Voter's Name</th>
+                    <th>Access Code</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="votersTable">
+                <tr>
+                    <td colspan="5">
+                        Loading...
+                    </td>
+                </tr>
+                <!-- Add more rows for additional voters -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Voter Modal -->
+<div class="modal fade" id="addVoterModal" tabindex="-1" aria-labelledby="addVoterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addVoterModalLabel">Add New Voter</h5>
+                <button type="button" class="btn-close btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addVoterForm">
+                    <div class="mb-4">
+                        <label for="voterId" class="form-label">Voter's ID</label>
+                        <input type="text" class="form-control" name="voterId" placeholder="Enter voter's ID" id="voterId" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="voterName" class="form-label">Voter's Name</label>
+                        <input type="text" class="form-control" name="voterName" placeholder="Enter voter's name" id="voterName" required>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label for="accessCode" class="form-label">Access Code</label>
+                        <button id="generateCodeBtn" type="button" class="btn btn-primary">Generate</button>
+                        </div>
+                        <input type="text" class="form-control" name="accessCode" id="accessCode" placeholder="Enter access code" id="accessCode" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeAddModal" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Add Voter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Voter Modal -->
+<div class="modal fade" id="editVoterModal" tabindex="-1" aria-labelledby="editVoterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editVoterModalLabel">Edit Voter</h5>
+                <button type="button" class="btn-close btn" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fas fa-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editVoterForm">
+                    <input type="text" hidden name="rowId" id="rowId">
+                    <div class="mb-4">
+                        <label for="editVoterId" class="form-label">Voter's ID</label>
+                        <input type="text" class="form-control" name="voterId" placeholder="Enter voter's ID" id="editVoterId" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="editVoterName" class="form-label">Voter's Name</label>
+                        <input type="text" class="form-control" name="voterName" placeholder="Enter voter's name" id="editVoterName" required>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <label for="editAccessCode" class="form-label">Access Code</label>
+                        <button id="editGenerateCodeBtn" type="button" class="btn btn-primary">Generate</button>
+                        </div>
+                        <input type="text" class="form-control" name="accessCode" id="editAccessCode" placeholder="Enter access code" id="accessCode" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeEditModal" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="voters.js"></script>
