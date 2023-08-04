@@ -249,6 +249,9 @@ form.addEventListener('submit', function (e) {
             if (response.status) {
                 showSuccessModal()
                 $('#voteModal').modal('show');
+                setTimeout(() => {
+                    location.href = "index.html"
+                }, 2000);
             } else {
                 showErrorModal(response.message)
                 $('#voteModal').modal('show');

@@ -22,6 +22,26 @@
         font-family: "Poppins", sans-serif, Arial, Helvetica, sans-serif;
       }
 
+      body{
+        background-image: url(https://mis.duc.edu.gh/app-assets/images/backgrounds/bg-2.jpg);
+        background-size: cover;
+        background-position: center;
+      }
+
+      body::after{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        content: "";
+        background-color: rgba(255, 0, 0, 0.307);
+        z-index: 0;
+      }
+
+      .con{
+        position: relative;
+        z-index: 1;
+      }
+
       input:focus {
         outline: none !important;
         border-color: #a10121 !important;
@@ -37,6 +57,38 @@
       @media (max-width: 1000px) {
         .con {
           width: 90% !important ;
+        }
+      }
+
+      @media(max-width:770px){
+        .main-container{
+          flex-direction: column;
+          padding-bottom: 8%;
+        }
+        .main-container .logo{
+          border: 0px solid !important;
+          width: 50% !important;
+        }
+        .main-container .logo img{
+          width: 100px !important;
+        }
+        .main-container form{
+          width:100% !important;
+        }
+      }
+
+      @media(max-width:500px){
+        .main-container{
+          padding-bottom: 20%;
+        }
+        .main-container .logo{
+          width: 90% !important;
+        }
+        .main-container .logo img{
+          width: 70px !important;
+        }
+        .main-container form{
+          padding: 0% !important;
         }
       }
 
@@ -89,12 +141,12 @@
             latifm8360@gmail.com</i
           >
         </span>
-        <div class="d-flex align-items-center">
+        <div class="d-flex main-container align-items-center">
           <div
             class="logo border-end px-3 border-5 py-3 text-center"
             style="
               width: 30%;
-              border-color: #a10121 !important;
+              border-color: #cd6a54 !important;
               overflow: hidden;
             "
           >
